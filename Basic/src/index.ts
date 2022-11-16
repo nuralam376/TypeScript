@@ -1,7 +1,33 @@
-let age: number = 28;
+let sales: number = 123_456_789;
+let course: string = "TypeScript";
+let is_published : boolean = true;
 
-if(age < 50) {
-    age += 10;
+let limit;
+
+function render(document : any) {
+    console.log(document);
 }
 
-console.log("Age is ", age);
+
+// Arrays
+let numbers: number[] = [1, 2, 3];
+// numbers[1] = "2";
+// numbers[2]  = "21";
+numbers.forEach(n => n.toFixed());
+
+
+// Tuples
+let numbers2: [number, string] = [1, "Name"];
+// numbers2[2] = "hello";
+numbers2.push("Hello");
+
+// Enum
+const Small = 1;
+const Medium = 2;
+const Large = 3;
+
+const enum Size {Small = 1, Medium, Large }
+
+const size: Size = Size.Medium;
+
+console.log(size);
