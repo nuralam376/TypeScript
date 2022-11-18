@@ -7,12 +7,16 @@ function calculateTax(income: number, taxYear: number = 2022): number {
 
 console.log(calculateTax(10_000));
 
+
+// Type Aliases
+type Employee = {
+    readonly id: number;
+    name? : string;
+    retire: (date: Date) => void;
+}
+
 // Objects
-let employee : {
-    readonly id : number,
-    name? : string,
-    retire: (date: Date) => void
-} = {
+let employee : Employee = {
     id : 1,
     // name : "",
     retire: (date : Date) => {
