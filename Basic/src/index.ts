@@ -4,7 +4,7 @@ let is_published : boolean = true;
 
 let limit;
 
-function render(document : any) {
+function render1(document : any) {
     console.log(document);
 }
 
