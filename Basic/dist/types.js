@@ -25,4 +25,33 @@ const customer = getCustomer(0);
 console.log((_a = customer === null || customer === void 0 ? void 0 : customer.birthDate) === null || _a === void 0 ? void 0 : _a.getFullYear());
 let log = null;
 log === null || log === void 0 ? void 0 : log("a");
+let speed = null;
+let ride = {
+    speed: speed !== null && speed !== void 0 ? speed : 30
+};
+let phone = document.getElementById("phone");
+phone.value;
+function render(document) {
+    if (typeof document === "string") {
+        document.toLocaleLowerCase();
+    }
+}
+function reject(message) {
+    throw new Error("Rejected" + message);
+}
+function readFile() {
+    while (true) {
+    }
+}
+let users = [
+    {
+        name: 'John Smith',
+        age: 30,
+        occupation: 'Software engineer'
+    },
+    {
+        name: 'Kate Müller',
+        age: 28
+    }
+];
 //# sourceMappingURL=types.js.map
