@@ -45,12 +45,84 @@ function Log(target: any, methodName: string, descriptor : PropertyDescriptor) {
     }
 }
 
+function Capitalize(target: any, methodName : string, descriptor : PropertyDescriptor) {
+    const original = descriptor.get;
+
+    descriptor.get = function() {
+        const result = original?.call(this);
+        return (typeof result === "string") ? result.toUpperCase() : result;
+    }
+}
+
 class Persons {
+    constructor(public firstName: string, public lastName: string) {}
+
     @Log
     say(message: string): void {
         console.log(`Person says ${message}`);
     }
+
+    @Capitalize
+    get FullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
 }
 
-const persons = new Persons();
+const persons = new Persons("Abc", "Def");
 persons.say("Hello");
+console.log(persons.FullName);
+
+function MinLength(length: number) {
+    return (target: any, propertyName : string) => {
+        let value: string;
+
+        const descriptor: PropertyDescriptor = {
+            get() {
+                return value;
+            },
+            set(newValue: string) {
+                if(newValue.length < length) {
+                    throw new Error(`${propertyName} should be at least ${length} long`);
+                }
+                value = newValue;
+            }
+        };
+        Object.defineProperty(target, propertyName, descriptor);
+    };
+}
+
+class Users {
+    @MinLength(4)
+    password: string;
+
+    constructor(password: string) {
+        this.password = password;
+    }
+}
+
+const newUser = new Users("12345");
+// newUser.password = "1";
+console.log(newUser.password);
+
+
+type WatchedParameter = {
+    propertyName: string;
+    propertyIndex: number;
+};
+
+
+let watchedParameters: WatchedParameter[] = [];
+
+function Watch(target: any, propertyName: string, propertyIndex: number) {
+    watchedParameters.push({
+        propertyName,
+        propertyIndex
+    });
+}
+class Vehicle {
+    move(@Watch speed : number) {}
+}
+
+const vehicle = new Vehicle();
+// vehicle.move(52);
+console.log(watchedParameters);
