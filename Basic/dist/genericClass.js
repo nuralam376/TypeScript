@@ -27,4 +27,21 @@ class CategoryStore extends Store {
 const store = new Store();
 store.add({ name: "Abc", price: 20 });
 console.log(store.find("name", "Abc"));
+let product = {
+    name: "Abc",
+    price: 12
+};
+let product2 = {
+    name: "Def",
+    price: 21
+};
+product.name = "Def";
+let product3 = {
+    name: "New",
+    price: 25
+};
+let product4 = {
+    name: "Test",
+    price: null
+};
 //# sourceMappingURL=genericClass.js.map
