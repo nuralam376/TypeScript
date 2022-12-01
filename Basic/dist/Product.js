@@ -23,7 +23,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Shapes = void 0;
 const Shapes = __importStar(require("./Shapes"));
+exports.Shapes = Shapes;
 const circle = new Shapes.Circle(1);
 console.log(circle.radius, Shapes.CircleSize.Medium);
 //# sourceMappingURL=Product.js.map
